@@ -19,6 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     window?.rootViewController = viewController
     window?.makeKeyAndVisible()
     
+    handleAppRun()
+    
     return true
   }
   
@@ -26,5 +28,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
   
   func applicationWillEnterForeground(_ application: UIApplication) {
+  }
+  
+  private func handleAppRun() {
+    if isFirstAppStart() {
+      generateRealmEncryptionKey()
+    }
+  }
+  
+  private func isFirstAppStart() -> Bool {
+    let isFirstAppStart = UserSettingsManager.isFirstStart
+    if isFirstAppStart {
+      UserSettingsManager.isFirstStart = false
+    }
+    return isFirstAppStart
+  }
+  
+  private func generateRealmEncryptionKey() {
+    let realmEncryptionKey = UniqueKeyGeneratorManager.generateUniqueEncryptionKey()
+    if let realmEncryptionKey = realmEncryptionKey {
+      KeyChainManager.save(
+        key: .realmEncryptionKey,
+        data: realmEncryptionKey
+      )
+    }
   }
 }

@@ -5,7 +5,9 @@
 //  Created by Darkhan Serkeshev on 26.11.2024.
 //
 
-struct SourceModel: Decodable {
-  let id: String?
-  let name: String?
+import RealmSwift
+
+final class SourceModel: Object, Decodable {
+  @Persisted var id: String?
+  @Persisted var name: String?
 }

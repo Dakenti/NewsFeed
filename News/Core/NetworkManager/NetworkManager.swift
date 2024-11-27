@@ -35,9 +35,11 @@ final class NetworkManager: NetworkManagerProtocol {
       }
       
       guard let data = data else { return }
+      let decoder = JSONDecoder()
+      decoder.dateDecodingStrategy = .iso8601
       
       do {
-        let users = try JSONDecoder().decode(T.self, from: data)
+        let users = try decoder.decode(T.self, from: data)
         completionOnMain(.success(users))
       } catch {
         debugPrint("Could not translate the data to the requested type. Reason: \(error.localizedDescription)")
