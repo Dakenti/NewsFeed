@@ -8,30 +8,17 @@
 import Foundation
 import RealmSwift
 
-final class RealmManager {
-  static let shared = RealmManager()
-  
-  var encryptedRealm: Realm {
-    let encryptionKey = KeyChainManager.load(key: .realmEncryptionKey)
-    let configurationMain = Realm.Configuration(
-      fileURL: inLibrarayFolder(fileName: "main.realm"),
-      encryptionKey: encryptionKey
-    )
-    return try! Realm(configuration: configurationMain)
-  }
-  
-  private var bundledRealmFileUrl: URL? {
-    return Bundle.main.url(
+final public class RealmManager: RealmManagerProtocol {
+  private let bundledRealmFileUrl: URL? = Bundle.main.url(
       forResource: "bundle",
       withExtension: "realm"
     )
-  }
-  
-  private init() {
-    setupRealm()
-  }
-  
-  private func setupRealm() {
+}
+
+// MARK: - Public Methods
+
+extension RealmManager {
+  public func setupRealm() {
     let bundledRealm = getBundledRealm()
     
     var users = [UserModel]()
@@ -47,6 +34,30 @@ final class RealmManager {
     }
     
     deleteBundledRealm()
+  }
+  
+  func checkUserCredentials(
+    username: String,
+    password: String
+  ) -> Bool {
+    if let user = encryptedRealm.object(ofType: UserModel.self, forPrimaryKey: username), user.password == password {
+      return true
+    } else {
+      return false
+    }
+  }
+}
+
+// MARK: - Private Methods
+
+extension RealmManager {
+  private var encryptedRealm: Realm {
+    let encryptionKey = KeyChainManager.load(key: .realmEncryptionKey)
+    let configurationMain = Realm.Configuration(
+      fileURL: inLibrarayFolder(fileName: "main.realm"),
+      encryptionKey: encryptionKey
+    )
+    return try! Realm(configuration: configurationMain)
   }
   
   private func getBundledRealm() -> Realm {
@@ -77,6 +88,6 @@ final class RealmManager {
       )[0],
       isDirectory: true
     )
-      .appendingPathComponent(fileName)
+    .appendingPathComponent(fileName)
   }
 }

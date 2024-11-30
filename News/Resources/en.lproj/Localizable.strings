@@ -1,0 +1,15 @@
+/* 
+  Localizable.strings
+  News
+
+  Created by Darkhan Serkeshev on 28.11.2024.
+  
+*/
+
+"Login.logoText" = "Logo";
+"Login.usernameTextFieldHint" = "Username";
+"Login.passwordTextFieldHint" = "Password";
+"Login.loginButton" = "Log In";
+"Login.alert.title" = "Incorrect credentials";
+"Login.alert.message" = "Username or password is not correct";
+"Login.alert.button" = "Ok";

@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		DD36E3152CF639F300ECFAD4 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DD36E3142CF639F300ECFAD4 /* RealmSwift */; };
+		DD36E3512CF97A1B00ECFAD4 /* XCoordinator in Frameworks */ = {isa = PBXBuildFile; productRef = DD36E3502CF97A1B00ECFAD4 /* XCoordinator */; };
+		DD36E3532CF97A1B00ECFAD4 /* XCoordinatorCombine in Frameworks */ = {isa = PBXBuildFile; productRef = DD36E3522CF97A1B00ECFAD4 /* XCoordinatorCombine */; };
+		DD36E3552CF97A1B00ECFAD4 /* XCoordinatorRx in Frameworks */ = {isa = PBXBuildFile; productRef = DD36E3542CF97A1B00ECFAD4 /* XCoordinatorRx */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +43,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD36E3552CF97A1B00ECFAD4 /* XCoordinatorRx in Frameworks */,
+				DD36E3532CF97A1B00ECFAD4 /* XCoordinatorCombine in Frameworks */,
+				DD36E3512CF97A1B00ECFAD4 /* XCoordinator in Frameworks */,
 				DD36E3152CF639F300ECFAD4 /* RealmSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -84,6 +90,9 @@
 			name = News;
 			packageProductDependencies = (
 				DD36E3142CF639F300ECFAD4 /* RealmSwift */,
+				DD36E3502CF97A1B00ECFAD4 /* XCoordinator */,
+				DD36E3522CF97A1B00ECFAD4 /* XCoordinatorCombine */,
+				DD36E3542CF97A1B00ECFAD4 /* XCoordinatorRx */,
 			);
 			productName = News;
 			productReference = DDF1D6892CF6221500A8EC1B /* News.app */;
@@ -115,6 +124,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				DD36E3112CF639F300ECFAD4 /* XCRemoteSwiftPackageReference "realm-swift" */,
+				DD36E34F2CF97A1B00ECFAD4 /* XCRemoteSwiftPackageReference "XCoordinator" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = DDF1D68A2CF6221500A8EC1B /* Products */;
@@ -360,6 +370,14 @@
 				kind = branch;
 			};
 		};
+		DD36E34F2CF97A1B00ECFAD4 /* XCRemoteSwiftPackageReference "XCoordinator" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/quickbirdstudios/XCoordinator.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.2.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -367,6 +385,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = DD36E3112CF639F300ECFAD4 /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
+		};
+		DD36E3502CF97A1B00ECFAD4 /* XCoordinator */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DD36E34F2CF97A1B00ECFAD4 /* XCRemoteSwiftPackageReference "XCoordinator" */;
+			productName = XCoordinator;
+		};
+		DD36E3522CF97A1B00ECFAD4 /* XCoordinatorCombine */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DD36E34F2CF97A1B00ECFAD4 /* XCRemoteSwiftPackageReference "XCoordinator" */;
+			productName = XCoordinatorCombine;
+		};
+		DD36E3542CF97A1B00ECFAD4 /* XCoordinatorRx */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DD36E34F2CF97A1B00ECFAD4 /* XCRemoteSwiftPackageReference "XCoordinator" */;
+			productName = XCoordinatorRx;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

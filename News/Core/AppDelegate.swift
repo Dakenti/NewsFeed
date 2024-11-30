@@ -6,33 +6,25 @@
 //
 
 import UIKit
+import XCoordinator
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-  
-  var window: UIWindow?
+  private lazy var mainWindow = UIWindow()
+  private let realmManager = RealmManager()
+  private lazy var router = MainCoordinator(realManager: realmManager).strongRouter
   
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-    window = UIWindow()
-    let viewController = LoginViewController()
-    viewController.view.backgroundColor = .cyan
-    window?.rootViewController = viewController
-    window?.makeKeyAndVisible()
-    
+    router.setRoot(for: mainWindow)
     handleAppRun()
     
     return true
   }
   
-  func applicationDidBecomeActive(_ application: UIApplication) {
-  }
-  
-  func applicationWillEnterForeground(_ application: UIApplication) {
-  }
-  
   private func handleAppRun() {
     if isFirstAppStart() {
       generateRealmEncryptionKey()
+      realmManager.setupRealm()
     }
   }
   
