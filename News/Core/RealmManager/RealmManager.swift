@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 
-final public class RealmManager: RealmManagerProtocol {
+final public class RealmManager {
   private let bundledRealmFileUrl: URL? = Bundle.main.url(
       forResource: "bundle",
       withExtension: "realm"
@@ -17,7 +17,7 @@ final public class RealmManager: RealmManagerProtocol {
 
 // MARK: - Public Methods
 
-extension RealmManager {
+extension RealmManager: RealmManagerProtocol {
   public func setupRealm() {
     let bundledRealm = getBundledRealm()
     
@@ -41,9 +41,33 @@ extension RealmManager {
     password: String
   ) -> Bool {
     if let user = encryptedRealm.object(ofType: UserModel.self, forPrimaryKey: username), user.password == password {
+      try! encryptedRealm.write {
+        user.isLoggedIn = true
+      }
       return true
     } else {
       return false
+    }
+  }
+  
+  func getCurrentLoggedInUsername() -> String? {
+    let users = encryptedRealm.objects(UserModel.self)
+    for user in users {
+      if user.isLoggedIn {
+        return user.username
+      }
+    }
+    
+    return nil
+  }
+  
+  func logOut(username: String) throws {
+    if let user = encryptedRealm.object(ofType: UserModel.self, forPrimaryKey: username) {
+      try! encryptedRealm.write {
+        user.isLoggedIn = false
+      }
+    } else {
+      throw RuntimeError(message: "Could not log out!")
     }
   }
 }

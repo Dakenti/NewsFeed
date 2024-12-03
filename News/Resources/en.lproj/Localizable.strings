@@ -6,6 +6,15 @@
   
 */
 
+// MARK: - Common
+
+"Alert.logOut.title" = "Log Out";
+"Alert.logOut.message" = "Would you like to log out?";
+"Alert.logOut.firstButton" = "Cancel";
+"Alert.logOut.secondButton" = "Log Out";
+
+// MARK: - Login Page
+
 "Login.logoText" = "Logo";
 "Login.usernameTextFieldHint" = "Username";
 "Login.passwordTextFieldHint" = "Password";
@@ -13,3 +22,13 @@
 "Login.alert.title" = "Incorrect credentials";
 "Login.alert.message" = "Username or password is not correct";
 "Login.alert.button" = "Ok";
+
+// MARK: - TopHeadings Page
+
+"TopHeadings.navBar.title" = "Top Headings";
+"TopHeadings.tabBar.title" = "Top";
+
+// MARK: - TopHeadings Page
+
+"SavedHeadings.navBar.title" = "Saved Headings";
+"SavedHeadings.tabBar.title" = "Saved";

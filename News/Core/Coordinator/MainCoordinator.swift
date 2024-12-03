@@ -11,11 +11,11 @@ import UIKit
 enum MainRoute: Route {
   case login
   case alert(title: String, message: String, buttonTitle: String)
-  case topHeadings
+  case headings
 }
 
 final class MainCoordinator: NavigationCoordinator<MainRoute> {
-  var realManager: RealmManagerProtocol
+  private var realManager: RealmManagerProtocol
   
   init(realManager: RealmManagerProtocol) {
     self.realManager = realManager
@@ -46,9 +46,12 @@ final class MainCoordinator: NavigationCoordinator<MainRoute> {
           handler: { _ in })
       )
       return .present(alert)
-    case .topHeadings:
-      let viewController = TopHeadingsViewController()
-      return .push(viewController)
+    case .headings:
+      let headingsRouter: StrongRouter<HeadingsTabRoute> = HeadingsTabCoordinator(
+        realManager: realManager
+      ).strongRouter
+      headingsRouter.viewController?.modalPresentationStyle = .fullScreen
+      return .present(headingsRouter, animation: .default)
     }
   }
 }

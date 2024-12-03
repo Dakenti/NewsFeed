@@ -11,6 +11,7 @@ import RealmSwift
 final class UserModel: Object {
   @Persisted(primaryKey: true) var username = ""
   @Persisted var password = ""
+  @Persisted var isLoggedIn = false
   @Persisted var savedArticles: List<ArticleModel>
   
   convenience init(username: String, password: String) {

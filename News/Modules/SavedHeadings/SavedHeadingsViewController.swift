@@ -1,24 +1,24 @@
 //
-//  TopHeadingsViewController.swift
+//  SavedHeadingsViewController.swift
 //  News
 //
-//  Created by Darkhan Serkeshev on 29.11.2024.
+//  Created by Darkhan Serkeshev on 01.12.2024.
 //
 
 import UIKit
 
-protocol TopHeadingsViewControllerProtocol: AnyObject {
+protocol SavedHeadingsViewControllerProtocol: AnyObject {
   func setProfilePlaceholder(_ letter: String)
 }
 
-final class TopHeadingsViewController: UIViewController {
+final class SavedHeadingsViewController: UIViewController {
   
-  var presenter: TopHeadingsViewPresenterProtocol!
+  var presenter: SavedHeadingsViewPresenterProtocol!
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    navigationItem.title = "TopHeadings.navBar.title".localized
+    navigationItem.title = "SavedHeadings.navBar.title".localized
     
     presenter.getUsername()
     
@@ -35,9 +35,9 @@ final class TopHeadingsViewController: UIViewController {
   }
 }
 
-// MARK: - TopHeadingsViewControllerProtocol
+// MARK: - SavedHeadingsViewControllerProtocol
 
-extension TopHeadingsViewController: TopHeadingsViewControllerProtocol {
+extension SavedHeadingsViewController: SavedHeadingsViewControllerProtocol {
   func setProfilePlaceholder(_ letter: String) {
     navigationItem.configureLeftBarItem(letter: letter)
   }

@@ -34,7 +34,7 @@ extension LoginViewPresenter: LoginViewPresenterProtocol {
     let passedCheck = realmManager.checkUserCredentials(username: username, password: password)
     
     if passedCheck {
-      router.trigger(.topHeadings)
+      router.trigger(.headings)
     } else {
       router.trigger(
         .alert(
