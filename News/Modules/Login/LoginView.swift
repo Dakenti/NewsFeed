@@ -170,6 +170,7 @@ extension LoginView {
     usernameTextField.text = ""
     passwordTextField.text = ""
     eyeButton.setImage(UIImage(named: "eye"), for: .normal)
+    isSecureTextEntry = true
     loginButton.isEnabled = false
     loginButton.backgroundColor = UIColor(r: 149, g: 204, b: 244)
   }

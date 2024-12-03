@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "ios-log-out.png",
+      "filename" : "logOut.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "logOut@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "logOut@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
